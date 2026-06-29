@@ -144,10 +144,12 @@ export default function BuyerHomePage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-white rounded-xl border border-outline-variant shadow-sm mt-8">
-          <span className="material-symbols-outlined text-6xl text-outline-variant mb-4">search_off</span>
-          <h3 className="text-title-md font-bold text-on-surface">Tidak ada produk</h3>
-          <p className="text-on-surface-variant mt-2">Coba kategori lain.</p>
+        <div className="py-12 mt-4">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="material-symbols-outlined text-3xl text-outline-variant">search_off</span>
+            <h3 className="text-title-md font-bold text-on-surface">Tidak ada produk</h3>
+          </div>
+          <p className="text-on-surface-variant">Belum ada produk untuk kategori ini. Coba pilih kategori lain.</p>
         </div>
       )}
 

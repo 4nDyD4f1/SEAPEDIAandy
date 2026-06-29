@@ -9,6 +9,8 @@ export interface Product {
   imageUrl: string | null
   stock: number
   category?: string
+  rating?: number | null
+  soldCount?: number
   store: {
     id: string
     name: string
@@ -77,11 +79,17 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           Hemat s.d 10% Pakai Bonus
         </div>
         
-        <div className="flex items-center gap-1 text-[10px] text-on-surface-variant mb-2">
-          <span className="material-symbols-outlined text-[#FFC107] text-[12px] [font-variation-settings:'FILL'_1]">star</span>
-          <span>4.8</span>
-          <span>•</span>
-          <span>500+ terjual</span>
+        <div className="flex items-center gap-1 text-[10px] text-on-surface-variant mb-2 h-[18px]">
+          {product.rating ? (
+            <>
+              <span className="material-symbols-outlined text-[#FFC107] text-[12px] [font-variation-settings:'FILL'_1]">star</span>
+              <span>{product.rating}</span>
+              <span>•</span>
+              <span>{product.soldCount || 0} terjual</span>
+            </>
+          ) : (
+            <span className="text-outline">Belum ada ulasan</span>
+          )}
         </div>
 
         <div className="flex items-center gap-1 mt-auto pt-1 border-t border-outline-variant/20">

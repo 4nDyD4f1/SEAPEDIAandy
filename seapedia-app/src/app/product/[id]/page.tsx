@@ -560,8 +560,8 @@ export default function ProductDetailPage() {
                         {filteredReviews.length > 0 ? filteredReviews.map((review: any, i: number) => (
                           <div key={review.id} className={`${i !== 0 ? 'border-t border-outline-variant/30 pt-6' : ''}`}>
                             <div className="flex gap-4">
-                              <div className="w-10 h-10 rounded-full bg-surface-container shrink-0 flex items-center justify-center font-bold text-outline-variant overflow-hidden">
-                                <Image src={`https://api.dicebear.com/7.x/initials/svg?seed=${review.name}`} alt={review.name} width={40} height={40} />
+                              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary shrink-0 flex items-center justify-center font-bold text-sm overflow-hidden border border-primary/20">
+                                {review.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase()}
                               </div>
                               <div className="flex-grow">
                                 <div className="text-xs font-semibold text-on-surface mb-1">{review.name}</div>

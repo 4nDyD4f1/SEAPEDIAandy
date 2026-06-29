@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
       where.storeId = storeId
     }
 
-    const [products, total] = await Promise.all([
+    const [productsRaw, total] = await Promise.all([
       prisma.product.findMany({
         where,
         skip,
@@ -41,10 +41,43 @@ export async function GET(request: NextRequest) {
           store: {
             select: { id: true, name: true, ownerId: true },
           },
+          orderItems: {
+            include: {
+              order: {
+                include: { review: true }
+              }
+            }
+          }
         },
       }),
       prisma.product.count({ where }),
     ])
+
+    const products = productsRaw.map((product) => {
+      let totalSold = 0
+      let totalRating = 0
+      let reviewCount = 0
+
+      for (const item of product.orderItems) {
+        // Count sold items (completed orders)
+        if (item.order.status === 'PESANAN_SELESAI' || item.order.status === 'MENUNGGU_REFUND' || item.order.status === 'DIKEMBALIKAN') {
+          totalSold += item.quantity
+        }
+        // Count reviews
+        if (item.order.review) {
+          totalRating += item.order.review.rating
+          reviewCount += 1
+        }
+      }
+
+      const { orderItems, ...rest } = product
+      return {
+        ...rest,
+        soldCount: totalSold,
+        rating: reviewCount > 0 ? Number((totalRating / reviewCount).toFixed(1)) : null,
+        reviewCount
+      }
+    })
 
     // Get categories for filter
     const categories = await prisma.product.findMany({
