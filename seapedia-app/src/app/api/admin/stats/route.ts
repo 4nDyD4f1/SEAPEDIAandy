@@ -9,50 +9,61 @@ export async function GET(request: NextRequest) {
 
   try {
     const [
-      totalUsers, totalStores, totalOrders, totalVouchers,
-      ordersByStatus, recentOrders, systemDate,
+      usersTotal, usersBuyer, usersSeller, usersDriver,
+      storesTotal, productsTotal, productsOOS,
+      ordersTotal, ordersActive, ordersCompleted, ordersRefunded,
+      vouchersTotal, vouchersActive,
+      deliveriesOngoing, deliveriesCompleted,
+      revenueAgg
     ] = await Promise.all([
+      // Users
       prisma.user.count(),
+      prisma.user.count({ where: { roles: { some: { role: 'BUYER' } } } }),
+      prisma.user.count({ where: { roles: { some: { role: 'SELLER' } } } }),
+      prisma.user.count({ where: { roles: { some: { role: 'DRIVER' } } } }),
+      
+      // Stores & Products
       prisma.store.count(),
+      prisma.product.count(),
+      prisma.product.count({ where: { stock: 0 } }),
+
+      // Orders
       prisma.order.count(),
+      prisma.order.count({ where: { status: { in: ['SEDANG_DIKEMAS', 'MENUNGGU_PENGIRIM', 'SEDANG_DIKIRIM'] } } }),
+      prisma.order.count({ where: { status: 'PESANAN_SELESAI' } }),
+      prisma.order.count({ where: { status: 'DIKEMBALIKAN' } }),
+
+      // Vouchers
       prisma.voucher.count(),
-      prisma.order.groupBy({ by: ['status'], _count: { _all: true } }),
-      prisma.order.findMany({
-        take: 10,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          buyer: { select: { name: true } },
-          store: { select: { name: true } },
-        },
+      prisma.voucher.count({ where: { OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }] } }),
+
+      // Delivery Jobs
+      prisma.order.count({ where: { status: 'SEDANG_DIKIRIM' } }),
+      prisma.order.count({ where: { status: 'PESANAN_SELESAI', driverId: { not: null } } }),
+
+      // Financials
+      prisma.order.aggregate({
+        where: { status: { in: ['PESANAN_SELESAI', 'SEDANG_DIKIRIM'] } },
+        _sum: { total: true, discountAmount: true }
       }),
-      prisma.systemConfig.findUnique({ where: { key: 'CURRENT_DATE' } }),
     ])
 
-    // Count active vouchers (not expired, not fully used)
-    const now = new Date()
-    const activeVouchers = await prisma.voucher.count({
-      where: {
-        AND: [
-          { OR: [{ expiresAt: null }, { expiresAt: { gt: now } }] },
-        ],
-      },
-    })
-
-    const totalRevenue = await prisma.order.aggregate({
-      where: { status: 'PESANAN_SELESAI' },
-      _sum: { total: true },
-    })
+    const ordersByStatus = await prisma.order.groupBy({ by: ['status'], _count: { _all: true } })
+    const formattedOrdersByStatus = ordersByStatus.map(o => ({ status: o.status, _count: o._count._all }))
 
     return NextResponse.json({
-      totalUsers,
-      totalStores,
-      totalOrders,
-      totalVouchers,
-      activeVouchers,
-      totalRevenue: totalRevenue._sum.total || 0,
-      ordersByStatus: ordersByStatus.map(o => ({ status: o.status, count: o._count._all })),
-      recentOrders,
-      systemDate: systemDate?.value || new Date().toISOString(),
+      users: { total: usersTotal, buyers: usersBuyer, sellers: usersSeller, drivers: usersDriver },
+      stores: { total: storesTotal },
+      products: { total: productsTotal, outOfStock: productsOOS },
+      orders: { total: ordersTotal, active: ordersActive, completed: ordersCompleted, refunded: ordersRefunded, overdue: ordersRefunded },
+      vouchers: { total: vouchersTotal, active: vouchersActive },
+      deliveryJobs: { ongoing: deliveriesOngoing, completed: deliveriesCompleted },
+      financials: { 
+        totalTransactionValue: revenueAgg._sum.total || 0,
+        totalDiscountGiven: revenueAgg._sum.discountAmount || 0,
+        totalVoucherUsage: 0 // Mocked for now, since usage count requires tracking
+      },
+      ordersByStatus: formattedOrdersByStatus
     })
   } catch (err) {
     console.error(err)

@@ -110,6 +110,45 @@ export default function AdminDashboard() {
             Pesanan direfund otomatis
           </div>
         </div>
+
+        <div className="card p-6 bg-white border-l-4 border-l-[#9c27b0] border-y border-r border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+          <div className="flex justify-between items-start mb-4">
+            <div className="w-10 h-10 rounded-lg bg-[#9c27b0]/10 text-[#9c27b0] flex items-center justify-center">
+              <span className="material-symbols-outlined">storefront</span>
+            </div>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Toko Aktif</span>
+          </div>
+          <h2 className="text-3xl font-black text-on-surface">{stats?.stores?.total || 0}</h2>
+          <div className="text-xs text-on-surface-variant mt-2">
+            Toko terdaftar di SEAPEDIA
+          </div>
+        </div>
+
+        <div className="card p-6 bg-white border-l-4 border-l-[#4caf50] border-y border-r border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+          <div className="flex justify-between items-start mb-4">
+            <div className="w-10 h-10 rounded-lg bg-[#4caf50]/10 text-[#4caf50] flex items-center justify-center">
+              <span className="material-symbols-outlined">inventory_2</span>
+            </div>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Katalog Produk</span>
+          </div>
+          <h2 className="text-3xl font-black text-on-surface">{stats?.products?.total || 0}</h2>
+          <div className="text-xs text-on-surface-variant mt-2">
+            <span className="text-error font-semibold">{stats?.products?.outOfStock || 0}</span> Habis stok
+          </div>
+        </div>
+
+        <div className="card p-6 bg-white border-l-4 border-l-[#ff9800] border-y border-r border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+          <div className="flex justify-between items-start mb-4">
+            <div className="w-10 h-10 rounded-lg bg-[#ff9800]/10 text-[#ff9800] flex items-center justify-center">
+              <span className="material-symbols-outlined">local_shipping</span>
+            </div>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Tugas Pengiriman</span>
+          </div>
+          <h2 className="text-3xl font-black text-on-surface">{stats?.deliveryJobs?.ongoing || 0}</h2>
+          <div className="text-xs text-on-surface-variant mt-2">
+            {stats?.deliveryJobs?.completed || 0} Pengiriman selesai
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -146,8 +185,12 @@ export default function AdminDashboard() {
           </h2>
           <div className="space-y-4">
             <div className="flex justify-between items-center bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
-              <span className="text-sm font-semibold text-on-surface-variant">Total Voucher Digunakan</span>
-              <span className="font-bold text-on-surface">{stats?.financials?.totalVoucherUsage || 0}</span>
+              <span className="text-sm font-semibold text-on-surface-variant">Total Voucher Dibuat</span>
+              <span className="font-bold text-on-surface">{stats?.vouchers?.total || 0}</span>
+            </div>
+            <div className="flex justify-between items-center bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
+              <span className="text-sm font-semibold text-on-surface-variant">Voucher Aktif</span>
+              <span className="font-bold text-primary">{stats?.vouchers?.active || 0}</span>
             </div>
             <div className="flex justify-between items-center bg-surface-container-low p-3 rounded-lg border border-outline-variant/50">
               <span className="text-sm font-semibold text-on-surface-variant">Total Diskon Diberikan</span>

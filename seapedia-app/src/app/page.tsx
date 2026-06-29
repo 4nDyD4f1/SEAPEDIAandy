@@ -29,7 +29,7 @@ export default function LandingPage() {
     const fetchData = async () => {
       try {
         const [prodRes, revRes] = await Promise.all([
-          fetch('/api/products'),
+          fetch('/api/products?limit=50'),
           fetch('/api/reviews')
         ])
         const prods = await prodRes.json()

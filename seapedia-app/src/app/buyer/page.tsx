@@ -24,7 +24,7 @@ export default function BuyerHomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/products')
+        const res = await fetch('/api/products?limit=50')
         const data = await res.json()
         if (res.ok) setProducts(data.products || [])
       } catch (error) {
