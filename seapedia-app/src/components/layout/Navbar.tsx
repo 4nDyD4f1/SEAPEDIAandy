@@ -216,7 +216,7 @@ export function Navbar() {
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Link href="/auth/login" className="btn-ghost btn-sm hidden md:inline-flex">Masuk</Link>
+              <Link href="/auth/login" className="btn-ghost btn-sm inline-flex">Masuk</Link>
               <Link href="/auth/register" className="btn-primary btn-sm">Daftar</Link>
             </div>
           )}
