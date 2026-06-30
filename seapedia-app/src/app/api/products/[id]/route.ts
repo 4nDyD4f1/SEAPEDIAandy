@@ -19,7 +19,8 @@ export async function GET(
             imageUrl: true,
             ownerId: true,
             owner: { select: { name: true } },
-            vouchers: true
+            vouchers: true,
+            createdAt: true
           },
         },
         orderItems: {

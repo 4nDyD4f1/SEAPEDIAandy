@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { useToast } from '@/components/ui/Toast'
@@ -89,9 +90,7 @@ export default function SelectRolePage() {
       {/* Main Content */}
       <div className="z-10 w-full max-w-5xl">
         <div className="text-center mb-16 animate-slide-down">
-          <div className="inline-flex items-center justify-center mb-6">
-            <span className="text-4xl md:text-5xl font-black tracking-tight logo-gradient">SEAPEDIA</span>
-          </div>
+            <Image src="/logo-blue.png" alt="SEAPEDIA" width={240} height={60} className="h-20 w-auto object-contain scale-[2.5]" priority />
           <h2 className="text-2xl md:text-4xl font-extrabold text-on-surface mb-4 tracking-tight">Pilih Peran Anda</h2>
           <p className="text-on-surface-variant max-w-[512px] mx-auto text-base md:text-lg">
             Hai <span className="font-bold text-on-surface">{user.name}</span>! Akun Anda terdaftar dengan beberapa peran. Silakan pilih ruang kerja Anda untuk sesi ini.

@@ -50,14 +50,26 @@ export function Navbar() {
     router.push('/auth/login')
   }
 
-  const handleRoleSwitch = (role: string) => {
-    setActiveRole(role)
-    setIsDropdownOpen(false)
-    switch(role) {
-      case 'BUYER': router.push('/buyer'); break;
-      case 'SELLER': router.push('/seller/dashboard'); break;
-      case 'DRIVER': router.push('/driver/dashboard'); break;
-      case 'ADMIN': router.push('/admin/dashboard'); break;
+  const handleRoleSwitch = async (role: string) => {
+    try {
+      const res = await fetch('/api/auth/switch-role', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role })
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setActiveRole(data.activeRole)
+        setIsDropdownOpen(false)
+        switch(role) {
+          case 'BUYER': router.push('/buyer'); break;
+          case 'SELLER': router.push('/seller/dashboard'); break;
+          case 'DRIVER': router.push('/driver/dashboard'); break;
+          case 'ADMIN': router.push('/admin/dashboard'); break;
+        }
+      }
+    } catch (e) {
+      console.error('Failed to switch role', e)
     }
   }
 
@@ -65,7 +77,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-outline-variant shadow-sm">
       <div className="container-app h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <Image src="/logo1.png" alt="SEAPEDIA" width={140} height={40} className="h-8 w-auto object-contain" priority />
+          <Image src="/logo-blue.png" alt="SEAPEDIA" width={140} height={40} className="h-16 w-auto object-contain scale-[2.5] origin-left" priority />
         </Link>
 
         <div className="flex items-center gap-4 md:gap-6">
@@ -146,6 +158,31 @@ export function Navbar() {
                         <span className="material-symbols-outlined text-[18px]">receipt_long</span>
                         Pesanan Saya
                       </Link>
+                    </div>
+                  )}
+
+                  {/* Role Switcher Section */}
+                  {user.roles.length > 1 && (
+                    <div className="border-t border-outline-variant mt-1 pt-1">
+                      <p className="px-4 py-1.5 text-[10px] font-bold text-outline uppercase tracking-wider">Ganti Peran</p>
+                      {user.roles.includes('BUYER') && activeRole !== 'BUYER' && (
+                        <button onClick={() => handleRoleSwitch('BUYER')} className="w-full text-left px-4 py-2 text-sm text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+                          <span className="material-symbols-outlined text-[16px] text-coral">shopping_bag</span>
+                          Sebagai Pembeli
+                        </button>
+                      )}
+                      {user.roles.includes('SELLER') && activeRole !== 'SELLER' && (
+                        <button onClick={() => handleRoleSwitch('SELLER')} className="w-full text-left px-4 py-2 text-sm text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+                          <span className="material-symbols-outlined text-[16px] text-primary">storefront</span>
+                          Sebagai Penjual
+                        </button>
+                      )}
+                      {user.roles.includes('DRIVER') && activeRole !== 'DRIVER' && (
+                        <button onClick={() => handleRoleSwitch('DRIVER')} className="w-full text-left px-4 py-2 text-sm text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+                          <span className="material-symbols-outlined text-[16px] text-teal-600">local_shipping</span>
+                          Sebagai Kurir
+                        </button>
+                      )}
                     </div>
                   )}
 

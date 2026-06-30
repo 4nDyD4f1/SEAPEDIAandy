@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { BottomNav } from '@/components/layout/BottomNav'
@@ -47,7 +48,7 @@ export default function SellerLayout({ children }: { children: React.ReactNode }
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-outline-variant fixed h-full z-40 shadow-sm">
         <div className="h-16 flex items-center px-6 border-b border-outline-variant shrink-0 bg-white">
           <Link href="/" className="flex items-center">
-            <span className="text-xl font-black tracking-tight logo-gradient">SEAPEDIA</span>
+            <Image src="/logo-blue.png" alt="SEAPEDIA" width={120} height={30} className="h-12 w-auto object-contain scale-[2.5] origin-left" priority />
           </Link>
         </div>
         

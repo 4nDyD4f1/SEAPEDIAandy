@@ -17,8 +17,10 @@ model User {
   passwordHash  String
   walletBalance Float    @default(0)
   address       String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  resetToken       String?
+  resetTokenExpiry DateTime?
 
   roles             UserRole[]
   store             Store?

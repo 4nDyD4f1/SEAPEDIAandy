@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { useToast } from '@/components/ui/Toast'
@@ -121,7 +122,7 @@ export default function RegisterPage() {
               <span className="material-symbols-outlined text-white text-[20px]">storefront</span>
             </div>
             <div className="flex items-center ml-1">
-              <span className="text-xl font-black tracking-tight logo-gradient">SEAPEDIA</span>
+              <Image src="/logo-blue.png" alt="SEAPEDIA" width={120} height={30} className="h-12 w-auto object-contain scale-[2.5] origin-left" priority />
             </div>
           </Link>
         </div>

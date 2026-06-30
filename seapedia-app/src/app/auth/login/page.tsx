@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { useToast } from '@/components/ui/Toast'
@@ -130,7 +131,7 @@ export default function LoginPage() {
               <span className="material-symbols-outlined text-primary text-[24px]">sailing</span>
             </div>
             <div className="flex items-center ml-2">
-              <span className="text-3xl font-black tracking-tight text-white">SEAPEDIA</span>
+              <Image src="/logo2.png" alt="SEAPEDIA" width={160} height={45} className="h-16 w-auto object-contain scale-[2.5] origin-left" priority />
             </div>
           </Link>
 
@@ -179,7 +180,7 @@ export default function LoginPage() {
               <span className="material-symbols-outlined text-white text-[20px]">sailing</span>
             </div>
             <div className="flex items-center ml-1">
-              <span className="text-xl font-black tracking-tight logo-gradient">SEAPEDIA</span>
+              <Image src="/logo-blue.png" alt="SEAPEDIA" width={120} height={30} className="h-12 w-auto object-contain scale-[2.5] origin-left" priority />
             </div>
           </Link>
         </div>
@@ -224,9 +225,9 @@ export default function LoginPage() {
                 <label className="text-sm font-semibold text-on-surface group-focus-within:text-primary transition-colors">
                   Password
                 </label>
-                <a href="#" className="text-xs font-semibold text-primary hover:text-primary-container transition-colors">
+                <Link href="/auth/forgot-password" className="text-xs font-semibold text-primary hover:text-primary-container transition-colors">
                   Lupa password?
-                </a>
+                </Link>
               </div>
               <div className="relative">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none text-outline group-focus-within:text-primary transition-colors">
@@ -266,48 +267,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Quick Login Testing Banner */}
-          <div className="mt-8 p-4 bg-amber-50 border-2 border-amber-200 rounded-2xl">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="material-symbols-outlined text-amber-500 text-[20px]">bug_report</span>
-              <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">Mode Testing (Sementara)</span>
-            </div>
-            <p className="text-xs text-amber-600 mb-3">Login cepat untuk testing. Akun & produk demo dibuat otomatis.</p>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                onClick={() => handleQuickLogin('BUYER')}
-                disabled={isLoading}
-                className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-xl text-amber-800 font-bold text-sm transition-colors disabled:opacity-50"
-              >
-                <span className="material-symbols-outlined text-[18px]">shopping_bag</span>
-                Masuk sbg Pembeli
-              </button>
-              <button
-                onClick={() => handleQuickLogin('SELLER')}
-                disabled={isLoading}
-                className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-xl text-amber-800 font-bold text-sm transition-colors disabled:opacity-50"
-              >
-                <span className="material-symbols-outlined text-[18px]">storefront</span>
-                Masuk sbg Penjual
-              </button>
-              <button
-                onClick={() => handleQuickLogin('DRIVER')}
-                disabled={isLoading}
-                className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-xl text-amber-800 font-bold text-sm transition-colors disabled:opacity-50"
-              >
-                <span className="material-symbols-outlined text-[18px]">local_shipping</span>
-                Masuk sbg Driver
-              </button>
-              <button
-                onClick={() => handleQuickLogin('ADMIN')}
-                disabled={isLoading}
-                className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-xl text-amber-800 font-bold text-sm transition-colors disabled:opacity-50"
-              >
-                <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
-                Masuk sbg Admin
-              </button>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
