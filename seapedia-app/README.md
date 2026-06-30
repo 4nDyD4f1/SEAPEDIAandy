@@ -10,18 +10,24 @@
 
 ---
 
-## 🔑 Akun Demo (Sudah Ter-Seeding)
+## 🔑 Akun Demo (Terbaru)
 
-Anda dapat langsung mencoba aplikasi dengan menggunakan salah satu dari akun-akun berikut (Password untuk semuanya adalah `password123`):
+> [!IMPORTANT]
+> **Keamanan Password Terjamin!**
+> Semua *password user* di dalam aplikasi ini **sudah terenkripsi** dengan sangat aman menggunakan algoritma *hashing* **Bcrypt**  Tidak ada pihak manapun yang bisa melihat *password* asli di dalam *database*.
+
+Anda dapat langsung mencoba aplikasi dengan menggunakan salah satu dari akun-akun berikut.
+**Password untuk SEMUA akun di bawah ini adalah:** `Password123!`
 
 | Peran | Email | Keterangan |
 | :--- | :--- | :--- |
 | **Admin** | `admin@seapedia.com` | Akses penuh ke God-Eye Dashboard & Time Simulator |
-| **Seller/Buyer** | `  ` | Punya toko "Toko Demo" dengan saldo awal & produk |
-| **Buyer** | `buyer@seapedia.com` | Pembeli murni dengan saldo awal Rp 100.000 |
-| **Driver/Buyer** | `driver@seapedia.com` | Kurir pengiriman |
+| **Buyer** | `buyer@seapedia.com` | Pembeli murni dengan saldo awal |
+| **Seller** | `seller@seapedia.com` | Akun khusus Penjual |
+| **Driver** | `driver@seapedia.com` | Kurir pengiriman |
+| **Multirole** | `multirole@seapedia.com` | **Spesial**: Merangkap peran Buyer, Seller, dan Driver (Semua peran kecuali Admin) |
 
-*Catatan: Semua peran di atas, selain Admin, juga merangkap sebagai Pembeli (Buyer).*
+*Catatan: Akun Multirole sangat cocok untuk menguji fitur "Switch Role" tanpa perlu relogin berulang kali.*
 
 ---
 
@@ -99,3 +105,17 @@ Seluruh API dilindungi oleh arsitektur middleware berbasis JWT dan `requireAuth`
    Aplikasi akan menyala di `http://localhost:3000`.
 
 *Happy Grading!* 💯
+
+---
+
+## 📋 Initial Instructions / Requirements
+
+● Allow Buyers to add products to cart.
+● Allow Buyers to update product quantities.
+● Allow Buyers to remove products from cart.
+● Create a cart summary endpoint and cart summary UI.
+● Implement single-store checkout: one cart can only contain products from one store.
+
+**Business Rules:**
+● The cart must reject products from a different store or clearly handle the conflict before adding them.
+● The single-store checkout behavior must be visible in the UI and documented in the README.
