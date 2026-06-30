@@ -50,9 +50,16 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4 bg-surface-container-lowest overflow-hidden selection:bg-primary/20">
+      
+      {/* 
+        ========================================================================
+        KONTEN UTAMA
+        Dibungkus dalam container yang berada di tengah layar (terpusat).
+        ========================================================================
+      */}
       <div className="z-10 w-full max-w-[448px] animate-slide-up">
         
-        {/* Header & Logo */}
+        {/* Header & Logo Khusus Lupa Password */}
         <div className="flex flex-col items-center mb-8">
           <Link href="/" className="inline-block mb-6">
             <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={160} height={45} className="h-12 sm:h-14 w-auto object-contain" priority />
@@ -72,7 +79,8 @@ export default function ForgotPasswordPage() {
 
         {!simulatedEmail ? (
           <div className="bg-white rounded-3xl p-8 shadow-xl shadow-primary/5 border border-outline-variant">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Formulir Pengisian Email */}
+        <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-1.5 group">
                 <label className="text-sm font-semibold text-on-surface group-focus-within:text-primary transition-colors">
                   Email Address

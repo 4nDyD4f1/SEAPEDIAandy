@@ -108,7 +108,12 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white selection:bg-coral/20">
-      {/* Left side: Register Form */}
+      {/* 
+        ========================================================================
+        BAGIAN KIRI: FORMULIR PENDAFTARAN
+        Area ini adalah area utama untuk pengguna mendaftar.
+        ========================================================================
+      */}
       <div className="w-full md:w-1/2 lg:w-7/12 flex items-center justify-center p-6 sm:p-12 lg:p-24 relative overflow-y-auto hide-scrollbar order-2 md:order-1">
         {/* Mobile Branding */}
         <div className="absolute top-6 left-6 md:hidden z-20">
@@ -292,7 +297,12 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      {/* Right side: Premium Branding */}
+      {/* 
+        ========================================================================
+        BAGIAN KANAN: BRANDING & ILUSTRASI (Hanya terlihat di Desktop)
+        Membantu memperindah tampilan pada layar yang lebih lebar.
+        ========================================================================
+      */}
       <div className="w-full md:w-1/2 lg:w-5/12 relative hidden md:flex flex-col items-center justify-center p-12 overflow-hidden order-1 md:order-2">
         {/* Dynamic Coral/Warm Mesh Gradient Background */}
         <div className="absolute inset-0 bg-[#3A0C00]">
@@ -305,11 +315,8 @@ export default function RegisterPage() {
         <div className="absolute top-1/4 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 -left-10 w-60 h-60 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
 
-        {/* Content */}
+        {/* Konten Utama Teks pada Bagian Kanan */}
         <div className="z-10 w-full max-w-[384px]">
-          <Link href="/" className="inline-block mb-10 md:mb-12">
-            <Image src="/SEAPEDIA-LOGO-PUTIH.png" alt="SEAPEDIA" width={240} height={70} className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-lg" priority />
-          </Link>
 
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             Mulai <br />

@@ -158,9 +158,16 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4 bg-surface-container-lowest overflow-hidden selection:bg-primary/20">
+      
+      {/* 
+        ========================================================================
+        KONTEN UTAMA
+        Dibungkus dalam container yang berada di tengah layar (terpusat).
+        ========================================================================
+      */}
       <div className="z-10 w-full max-w-[448px] animate-slide-up">
         
-        {/* Header & Logo */}
+        {/* Header & Logo Khusus Reset Password */}
         <div className="flex flex-col items-center mb-8">
           <Link href="/" className="inline-block mb-6">
             <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={160} height={45} className="h-12 sm:h-14 w-auto object-contain" priority />

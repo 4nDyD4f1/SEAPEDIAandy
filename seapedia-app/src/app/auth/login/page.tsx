@@ -103,24 +103,27 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white selection:bg-primary/20">
-      {/* Left side: Premium Branding */}
+      {/* 
+        ========================================================================
+        BAGIAN KIRI: BRANDING & ILUSTRASI (Hanya terlihat di Desktop)
+        Class 'hidden md:flex' membuat bagian ini hilang di HP dan muncul di layar medium ke atas.
+        ========================================================================
+      */}
       <div className="w-full md:w-1/2 lg:w-5/12 relative hidden md:flex flex-col items-center justify-center p-12 overflow-hidden">
-        {/* Dynamic Mesh Gradient Background */}
+        
+        {/* Latar Belakang Mesh Gradient Dinamis menggunakan radial-gradient */}
         <div className="absolute inset-0 bg-[#001B3C]">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_#005baf_0%,_transparent_50%)] opacity-70"></div>
           <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_100%,_#fe6a34_0%,_transparent_50%)] opacity-40"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_#008471_0%,_transparent_60%)] opacity-30"></div>
         </div>
         
-        {/* Abstract floating shapes */}
+        {/* Ornamen bentuk abstrak melayang dengan efek blur dan animasi pulse (berkedip perlahan) */}
         <div className="absolute top-1/4 -left-10 w-40 h-40 bg-white/5 rounded-full blur-2xl animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 -right-10 w-60 h-60 bg-coral/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
 
-        {/* Content */}
+        {/* Konten Utama Teks pada Bagian Kiri */}
         <div className="z-10 w-full max-w-[384px]">
-          <Link href="/" className="inline-block mb-10 md:mb-12">
-            <Image src="/SEAPEDIA-LOGO-PUTIH.png" alt="SEAPEDIA" width={240} height={70} className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-lg" priority />
-          </Link>
 
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             Samudra <br />
@@ -158,9 +161,15 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right side: Login Form */}
+      {/* 
+        ========================================================================
+        BAGIAN KANAN: FORMULIR LOGIN
+        Area ini memakan sisi kanan di Desktop, atau lebar penuh (100%) di Mobile.
+        ========================================================================
+      */}
       <div className="w-full md:w-1/2 lg:w-7/12 flex items-center justify-center p-6 sm:p-12 lg:p-24 relative overflow-y-auto hide-scrollbar">
-        {/* Mobile Branding */}
+        
+        {/* Logo Branding Khusus Mobile (Muncuk di HP, disembunyikan di Desktop dengan md:hidden) */}
         <div className="absolute top-6 left-6 md:hidden z-20">
           <Link href="/" className="inline-block">
             <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={160} height={45} className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm" priority />
