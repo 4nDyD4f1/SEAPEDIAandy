@@ -108,14 +108,3 @@ Seluruh API dilindungi oleh arsitektur middleware berbasis JWT dan `requireAuth`
 
 ---
 
-## 📋 Initial Instructions / Requirements
-
-● Allow Buyers to add products to cart.
-● Allow Buyers to update product quantities.
-● Allow Buyers to remove products from cart.
-● Create a cart summary endpoint and cart summary UI.
-● Implement single-store checkout: one cart can only contain products from one store.
-
-**Business Rules:**
-● The cart must reject products from a different store or clearly handle the conflict before adding them.
-● The single-store checkout behavior must be visible in the UI and documented in the README.
