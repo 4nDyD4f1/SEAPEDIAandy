@@ -118,7 +118,9 @@ export default function LoginPage() {
 
         {/* Content */}
         <div className="z-10 w-full max-w-[384px]">
-
+          <Link href="/" className="inline-block mb-10 md:mb-12">
+            <Image src="/SEAPEDIA-LOGO-PUTIH.png" alt="SEAPEDIA" width={240} height={70} className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-lg" priority />
+          </Link>
 
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             Samudra <br />
@@ -159,14 +161,9 @@ export default function LoginPage() {
       {/* Right side: Login Form */}
       <div className="w-full md:w-1/2 lg:w-7/12 flex items-center justify-center p-6 sm:p-12 lg:p-24 relative overflow-y-auto hide-scrollbar">
         {/* Mobile Branding */}
-        <div className="absolute top-6 left-6 md:hidden">
-          <Link href="/" className="inline-flex items-center gap-1">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-md">
-              <span className="material-symbols-outlined text-white text-[20px]">sailing</span>
-            </div>
-            <div className="flex items-center ml-1">
-              <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={120} height={30} className="h-12 w-auto object-contain " priority />
-            </div>
+        <div className="absolute top-6 left-6 md:hidden z-20">
+          <Link href="/" className="inline-block">
+            <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={160} height={45} className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm" priority />
           </Link>
         </div>
 

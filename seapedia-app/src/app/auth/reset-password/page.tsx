@@ -162,7 +162,9 @@ export default function ResetPasswordPage() {
         
         {/* Header & Logo */}
         <div className="flex flex-col items-center mb-8">
-
+          <Link href="/" className="inline-block mb-6">
+            <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={160} height={45} className="h-12 sm:h-14 w-auto object-contain" priority />
+          </Link>
           <h2 className="text-3xl font-bold text-on-surface mb-3 tracking-tight">Buat Sandi Baru 🔑</h2>
           <p className="text-on-surface-variant text-center px-4">
             Pastikan Anda menggunakan kata sandi yang kuat dan mudah diingat.

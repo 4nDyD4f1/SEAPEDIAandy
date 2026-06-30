@@ -111,8 +111,10 @@ export default function RegisterPage() {
       {/* Left side: Register Form */}
       <div className="w-full md:w-1/2 lg:w-7/12 flex items-center justify-center p-6 sm:p-12 lg:p-24 relative overflow-y-auto hide-scrollbar order-2 md:order-1">
         {/* Mobile Branding */}
-        <div className="absolute top-6 left-6 md:hidden">
-
+        <div className="absolute top-6 left-6 md:hidden z-20">
+          <Link href="/" className="inline-block">
+            <Image src="/SEAPEDIA-LOGO.png" alt="SEAPEDIA" width={160} height={45} className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm" priority />
+          </Link>
         </div>
 
         <div className="w-full max-w-[448px] animate-slide-up mt-12 md:mt-0">
@@ -305,11 +307,9 @@ export default function RegisterPage() {
 
         {/* Content */}
         <div className="z-10 w-full max-w-[384px]">
-          <div className="mb-12">
-            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/20 shadow-2xl mb-6 shadow-coral/20">
-              <span className="material-symbols-outlined text-white text-[32px]">storefront</span>
-            </div>
-          </div>
+          <Link href="/" className="inline-block mb-10 md:mb-12">
+            <Image src="/SEAPEDIA-LOGO-PUTIH.png" alt="SEAPEDIA" width={240} height={70} className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-lg" priority />
+          </Link>
 
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             Mulai <br />
