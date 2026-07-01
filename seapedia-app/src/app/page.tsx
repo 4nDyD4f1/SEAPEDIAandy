@@ -328,12 +328,12 @@ export default function LandingPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
         
         <div className="container-app relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
-              <div className="flex items-center justify-center md:justify-start mb-4">
-                <Image src="/SEAPEDIA-LOGO-PUTIH.png" alt="SEAPEDIA" width={140} height={40} className="h-16 w-auto object-contain scale-[2.5] origin-left" />
+              <div className="flex items-center justify-start mb-4">
+                <Image src="/SEAPEDIA-LOGO-PUTIH.png" alt="SEAPEDIA" width={240} height={70} className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-lg" />
               </div>
-              <p className="text-white/60 text-sm text-center md:text-left">
+              <p className="text-white/60 text-sm text-left">
                 Marketplace Multi-Peran Terbaik & Terpercaya
               </p>
             </div>
@@ -344,7 +344,7 @@ export default function LandingPage() {
               <a href="#" className="hover:text-primary transition-colors">Bantuan</a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/40 text-xs">
+          <div className="mt-8 pt-8 border-t border-white/10 text-left md:text-center text-white/40 text-xs">
             &copy; {new Date().getFullYear()} SEAPEDIA. All rights reserved.
           </div>
         </div>
