@@ -148,7 +148,7 @@ export default function LandingPage() {
         </section>
 
         {/* CATALOG SECTION */}
-        <section className="page-section bg-surface">
+        <section id="products-section" className="page-section bg-surface scroll-mt-20">
           <div className="container-app">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
               <div>
@@ -225,6 +225,7 @@ export default function LandingPage() {
                   onClick={() => {
                     setActiveTab('Semua')
                     setSearchQuery('')
+                    document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })
                   }}
                   className="btn-outline border-outline-variant text-on-surface hover:border-primary hover:text-primary hover:bg-transparent bg-white shadow-sm">
                   Lihat Semua Produk
